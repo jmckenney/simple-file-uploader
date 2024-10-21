@@ -5,6 +5,9 @@ exports.handler = async function (event) {
   if (event.httpMethod !== 'POST') {
     return {
       statusCode: 405,
+      headers: {
+        'Access-Control-Allow-Origin': '*',  // Allow all origins, or specify your allowed domains
+      },
       body: 'Method Not Allowed',
     };
   }
@@ -19,6 +22,9 @@ exports.handler = async function (event) {
 
   return {
     statusCode: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
     body: JSON.stringify({
       message: 'File uploaded successfully',
       path: uploadPath, // Include the file path in the response
